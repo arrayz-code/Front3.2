@@ -36,7 +36,7 @@ class ContactUs extends Component {
         animate="visible"
       >
         <motion.h1
-          className='text-2xl sm:text-3xl md:text-4xl text-center font-bold mb-8 mt-4 text-sky-600'
+          className='text-2xl sm:text-3xl md:text-4xl text-center font-bold mb-8 mt-4 '
           variants={itemVariants}
         >
           Contáctanos

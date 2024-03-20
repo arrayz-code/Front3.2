@@ -46,7 +46,7 @@ const Promotions = () => {
       animate="visible"
     >
       <motion.h1
-          className='text-4xl text-center font-bold mb-8 mt-4 text-sky-600'
+          className='text-4xl text-center font-bold mb-8 mt-4 '
           variants={containerVariants}
         >
           Promociones
@@ -59,7 +59,7 @@ const Promotions = () => {
         {promotionsData.map((promotion, idx) => (
           <motion.div
             key={idx}
-            className="p-6 w-full md:w-1/2 lg:w-1/3 bg-white rounded-xl shadow-md transition-shadow duration-300 ease-in-out"
+            className="p-6 w-full md:w-1/2 lg:w-1/3  rounded-xl shadow-md transition-shadow duration-300 ease-in-out"
             variants={itemVariants} 
             whileHover="hover"
             whileTap="tap"

@@ -50,22 +50,22 @@ function Reservas() {
 // Renderizar el componente
   return (
     <motion.div
-      className="min-h-screen bg-gray-100 flex items-center justify-center"
+      className="min-h-screen  flex items-center justify-center "
       initial="hidden"
       animate="visible"
       exit="exit"
       variants={variants}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-xl shadow-lg">
-        <h1 className="text-3xl font-bold text-center text-sky-600">
+      <div className="max-w-md w-full space-y-8 p-6  rounded-xl shadow-lg ">
+        <h1 className="text-3xl font-bold text-center ">
           Formulario de reserva del hotel
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-4">
             {/* Nombre completo */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="name" className="block text-sm font-medium ">
                 Nombre completo
               </label>
               <input
@@ -82,7 +82,7 @@ function Reservas() {
             </div>
             {/* Correo electrónico */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium ">
                 Correo electrónico
               </label>
               <input
@@ -105,7 +105,7 @@ function Reservas() {
             {/* Fechas de llegada y salida */}
             <div className="flex space-x-4">
               <div>
-                <label htmlFor="arrivalDate" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="arrivalDate" className="block text-sm font-medium ">
                   Fecha de llegada
                 </label>
                 <input
@@ -121,7 +121,7 @@ function Reservas() {
                 )}
               </div>
               <div>
-                <label htmlFor="departureDate" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="departureDate" className="block text-sm font-medium ">
                   Fecha de salida
                 </label>
                 <input
@@ -139,7 +139,7 @@ function Reservas() {
             </div>
             {/* Tipo de habitación */}
             <div>
-              <label htmlFor="roomType" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="roomType" className="block text-sm font-medium ">
                 Tipo de habitación
               </label>
               <select
@@ -160,7 +160,7 @@ function Reservas() {
             </div>
             {/* Solicitudes especiales */}
             <div>
-              <label htmlFor="specialRequests" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="specialRequests" className="block text-sm font-medium ">
                 Solicitudes especiales
               </label>
               <textarea
@@ -171,7 +171,7 @@ function Reservas() {
             </div>
             {/* Método de pago */}
             <div>
-              <label htmlFor="paymentMethod" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="paymentMethod" className="block text-sm font-medium ">
                 Método de pago
               </label>
               <select

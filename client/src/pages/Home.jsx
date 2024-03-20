@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+
 // Componente para mostrar estrellas de calificación
 const EstrellasCalificacion = ({ calificacion }) => {
   const estrellasLlenas = Array(Math.floor(calificacion)).fill('★');
@@ -11,13 +12,14 @@ const EstrellasCalificacion = ({ calificacion }) => {
   const estrellasVacias = Array(5 - estrellasLlenas.length - estrellasMedias.length).fill('☆');
 
   return (
-    <div className="text-yellow-400 text-lg"> 
+    <div> 
       {estrellasLlenas.concat(estrellasMedias).concat(estrellasVacias)}
     </div>
   );
 };
 
 const Home = () => {
+
   const containerVariants = {
     hidden: { scale: 0.95, opacity: 0 },
     visible: { scale: 1, opacity: 1, transition: { duration: 0.5 } },
@@ -41,9 +43,13 @@ const Home = () => {
   ];
 
   return (
-    <motion.div variants={containerVariants} initial="hidden" animate="visible" className="bg-gradient-to-r from-blue-500 to-amber-700 min-h-screen flex flex-col items-center justify-center">
-      <div className="container mx-auto px-4 py-8 text-white">
+  
+    <motion.div variants={containerVariants} initial="hidden" animate="visible" >
+   
+      <div className="container mx-auto px-4 py-8">
+    
         <motion.h2 className="text-4xl font-bold mb-12" initial={{ x: -200, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}>
+     
           Bienvenidos a Hotel La Montaña
         </motion.h2>
         <motion.p className="text-lg mb-12" initial={{ x: 200, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.4, type: 'spring', stiffness: 120 }}>
@@ -52,12 +58,12 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
           {/* Sección de servicios */}
           <motion.div className="bg-white/10 backdrop-blur-sm shadow-lg p-6 rounded-lg" initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.6 }}>
-            <h3 className="text-xl font-semibold text-yellow-100 mb-4">Nuestros Servicios</h3>
+            <h3 className="text-xl font-semibold">Nuestros Servicios</h3>
             <p>Disfruta de nuestros tratamientos de spa, la alta cocina y nuestro centro de fitness.</p>
           </motion.div>
           {/* Sección de promociones */}
           <motion.div className="bg-white/10 backdrop-blur-sm shadow-lg p-6 rounded-lg" initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.8 }}>
-            <h3 className="text-xl font-semibold text-yellow-100 mb-4">Promociones Especiales</h3>
+            <h3 className="text-xl font-semibold">Promociones Especiales</h3>
             <p>Aprovecha nuestras promociones exclusivas y descuentos para una estancia memorable.</p>
           </motion.div>
         </div>
@@ -68,7 +74,7 @@ const Home = () => {
              
               <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="https://st2.depositphotos.com/1000975/7817/i/450/depositphotos_78170466-stock-photo-hotel-room-with-modern-interior.jpg" alt="imagen del hotel" />
               <div className="p-6">
-                <h2 className="text-base font-medium text-yellow-300 mb-1">Habitaciones de Lujo</h2>
+                <h2 className="text-base font-medium">Habitaciones de Lujo</h2>
                 <p className="leading-relaxed mb-3">Habitaciones con vistas impresionantes y todas las comodidades modernas.</p>
               </div>
             </div>
@@ -77,7 +83,7 @@ const Home = () => {
             <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
               <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="https://static7.depositphotos.com/1005629/736/i/380/depositphotos_7364008-stock-photo-grilled-chicken-breast-on-ratatouille.jpg" alt="imagen del restaurante" />
               <div className="p-6">
-                <h2 className="text-base font-medium text-yellow-300 mb-1">Restaurante Gourmet</h2>
+                <h2 className="text-base font-medium">Restaurante Gourmet</h2>
                 <p className="leading-relaxed mb-3">Disfruta de la mejor gastronomía en un ambiente elegante y sofisticado.</p>
               </div>
             </div>

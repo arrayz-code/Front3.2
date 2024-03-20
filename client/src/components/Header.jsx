@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useAuth } from "../context/AuthContext"
+import { Link } from 'react-router-dom';
+import DarkModeButton from "./DarkModeButton"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, logout } = useAuth();
 
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  const { isAuthenticated, logout } = useAuth();
 
   return (
     <header className="bg-white shadow">
@@ -28,9 +29,15 @@ const Header = () => {
                   <li><a className="text-gray-600 hover:text-gray-800 font-medium" href="/promotions">Promociones</a></li>
                   <li><a className="text-gray-600 hover:text-gray-800 font-medium" href="/contact">Contactanos</a></li>
                   <li><a className="text-gray-600 hover:text-gray-800 font-medium" href="/blog">Blog</a></li>
-                  <li><a className="text-white hover:text-black font-medium  bg-indigo-500 px-4 py-1 rounded-md" href="/" onClick={() => {
-                    logout();
-                  }}>Logout</a></li>
+                  <li><button onClick={logout} className="text-white hover:text-black font-medium bg-indigo-500 px-4 py-1 rounded-md">Logout</button></li>
+                  {isAuthenticated && (
+                    <li> <Link to="/admin" className="text-gray-600 hover:text-gray-800 font-medium">
+                    <button className="bg-indigo-500 text-white rounded-full px-2.5 py-1">A</button>
+                  </Link></li>
+                  
+                  )}
+                   {/* Agrega DarkModeButton aquí */}
+                   <DarkModeButton />
                 </>
               ) :
                 (<>
@@ -39,9 +46,6 @@ const Header = () => {
                   <li><a className="text-gray-600 hover:text-gray-800 font-medium" href="/services">Servicios</a></li>
                   <li><a className="text-gray-600 hover:text-gray-800 font-medium" href="/contact">Contactanos</a></li>
                   <li><a className="text-gray-600 hover:text-gray-800 font-medium" href="/blog">Blog</a></li>
-
-
-
                 </>)}
             </ul>
           </nav>

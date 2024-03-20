@@ -1,3 +1,20 @@
+/* tailwind.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dark {
+  /* Cambia los colores y estilos para el modo oscuro aquí */
+  --bg-color: #1a202c;
+  --text-color: #e2e8f0;
+
+}
+
+/* Estilos generales que se aplicarán independientemente del modo */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+ 
+}
+
+/* Otros estilos específicos de la aplicación */

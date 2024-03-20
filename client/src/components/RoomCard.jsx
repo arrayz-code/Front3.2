@@ -11,10 +11,10 @@ const RoomCard = ({ roomName, roomDescription, roomImage, price, currency, excha
     >
       <img className="w-full h-48 object-cover" src={roomImage} alt={roomName} />
       <div className="p-4">
-        <h3 className="text-xl font-semibold text-sky-600">{roomName}</h3>
-        <p className="text-gray-800">{roomDescription}</p>
+        <h3 className="text-xl font-semibold ">{roomName}</h3>
+        <p className="">{roomDescription}</p>
         <div className="flex items-center justify-between mt-4">
-          <span className="text-gray-700 text-sm" // Se añade un elemento para mostrar el precio
+          <span className=" text-sm" // Se añade un elemento para mostrar el precio
             style={{
               marginRight: '10px' // Se añade un margen a la derecha
             }}>

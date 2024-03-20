@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
+import Admin from "./pages/Admin";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Router>
         <div>
           <Header />
+          
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
@@ -32,6 +34,8 @@ const App = () => {
             <Route path="/promotions" element={<Promotions />} />
             <Route path="/precios" element={<Precios />} />
             <Route path="/reservas" element={<Reservas />} />
+            <Route path="/admin" element={<Admin />} />
+
             </Route>
 
           </Routes>

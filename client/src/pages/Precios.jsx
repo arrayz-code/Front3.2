@@ -61,31 +61,27 @@ const Prices = () => {
         backgroundSize: 'cover', 
         backgroundRepeat: 'no-repeat',
         backdropFilter: 'blur(5px)',
-        opacity: 0.1,
+       
       }}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <div className="text-center mb-6">
-        <h2 className="text-4xl font-bold text-sky-600 inline-block p-2"
-            style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.5)',
-              borderRadius: '10px',
-              boxShadow: '0 0 10px #fff'
-            }}>
+        <h2 className="text-4xl font-bold inline-block p-2"
+          >
           Precios de las Habitaciones
         </h2>
         <div>
   <button
     onClick={() => handleCurrencyChange('EUR')}
-    className="text-gray-600 bg-white border border-gray-300 hover:bg-gray-50 font-medium py-1 px-3 rounded shadow-sm"
+    className=" font-medium py-1 px-3 rounded shadow-sm"
   >
     Cambiar a Euros
   </button>
   <button
     onClick={() => handleCurrencyChange('USD')}
-    className="text-gray-600 bg-white border border-gray-300 hover:bg-gray-50 font-medium py-1 px-3 rounded shadow-sm ml-2"
+    className=" font-medium py-1 px-3 rounded shadow-sm ml-2"
   >
     Cambiar a Dólares
   </button>
