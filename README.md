@@ -1,6 +1,6 @@
 # Hotel La Montaña - Página Web SPA
 
-![Inicio de la Aplicación](src/assets/HOTEL.png)
+![Inicio de la Aplicación](client/src/assets/HOTEL.png)
 
 ## Descripción
 
