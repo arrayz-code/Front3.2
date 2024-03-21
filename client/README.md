@@ -1,10 +1,12 @@
+
 # Hotel La Montaña - Página Web SPA
 
 ![Inicio de la Aplicación](src/assets/HOTEL.png)
 
 ## Descripción
 
-Este proyecto de una Single Page Application (SPA), desarrollada con React, Vite, y React Router, ahora cuenta con un robusto sistema de autenticación JWT que incluye roles de usuario diferenciados, como moderadores y administradores. Además de las funcionalidades de registro y login, se ha añadido un panel de administrador para la gestión integral del contenido del hotel, junto con un panel para moderadores. Los usuarios autenticados pueden disfrutar de características adicionales, como dejar comentarios y valoraciones sobre el hotel, así como realizar reservas seguras a través de una integración con una API de pago. Esta aplicación también ofrece una experiencia de usuario mejorada con funcionalidades como la búsqueda avanzada, gestión de perfiles de usuario, y una sección dedicada a noticias y eventos del hotel. Todo ello complementado con una optimización SEO para mejorar la visibilidad en los motores de búsqueda y atraer más tráfico orgánico
+Este proyecto consiste en una Single Page Application (SPA) construida con React, Vite, React Router. La página web está diseñada para promocionar y ofrecer información sobre el Hotel La Montaña, con funcionalidades avanzadas para mejorar la experiencia del usuario.
+
 ## Características Principales
 
 1. **Diseño y Responsividad:**
@@ -33,7 +35,7 @@ Este proyecto de una Single Page Application (SPA), desarrollada con React, Vite
 
 1. **Clonar el Repositorio:**
 
-git clone https://github.com/arrayz-code/Front3.2
+git clone https://github.com/ely2547/frontend-3.1.git
 cd frontend-3.1
 
 
@@ -71,4 +73,4 @@ Este proyecto fue desarrollado con amor y dedicación por el equipo de desarroll
 - [Mariely Viloria](https://github.com/ely2547)
 
 
-Si tienes alguna pregunta o comentario, no dudes en contactar a alguno de nuestros creadores. Estamos aquí para
+Si tienes alguna pregunta o comentario, no dudes en contactar a alguno de nuestros creadores. Estamos aquí para hacer tu experiencia en Hotel La Montaña aún más especial.
