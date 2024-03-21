@@ -1,28 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RoomCard from '../components/RoomCard';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
-const pricesData = [
-  {
-    name: "Habitación Doble",
-    description: "Una habitación cómoda y espaciosa con dos camas individuales.",
-    image: "https://st2.depositphotos.com/1000975/11773/i/600/depositphotos_117733132-stock-photo-modern-hotel-room-with-big.jpg",
-    price: 50
-  },
-  {
-    name: "Habitación Suite",
-    description: "Una habitación de lujo con una cama king size y un jacuzzi privado.",
-    image: "https://st2.depositphotos.com/1000975/8586/i/450/depositphotos_85867294-stock-photo-hotel-room-with-modern-interior.jpg",
-    price: 100
-  },
-  {
-    name: "Habitación Familiar",
-    description: "Una habitación ideal para familias con una cama matrimonial y dos camas individuales.",
-    image: "https://st2.depositphotos.com/1321174/8163/i/600/depositphotos_81631752-stock-photo-luxury-hotel-room.jpg",
-    price: 80
-  }
-];
-
+// Variants para las animaciones con Framer Motion
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -44,68 +25,93 @@ const itemVariants = {
   }
 };
 
+// Componente Prices
 const Prices = () => {
-  const [currency, setCurrency] = useState('USD');
-  const [exchangeRate, setExchangeRate] = useState(1); // Tipo de cambio por defecto
+  const [roomsData, setRoomsData] = useState([]); // Datos de las habitaciones
+  const [selectedRoom, setSelectedRoom] = useState(null); // Habitación seleccionada
+  const [currency, setCurrency] = useState('USD'); // Moneda seleccionada
+  const [exchangeRate, setExchangeRate] = useState(1); // Tasa de cambio
+  const [peopleFilter, setPeopleFilter] = useState(''); // Filtro de personas
+  const [loading, setLoading] = useState(false); // Estado de carga
 
-  const handleCurrencyChange = (newCurrency) => {
-    const newExchangeRate = newCurrency === 'EUR' ? 0.93 : 1; // tipo de cambio
-    setCurrency(newCurrency);
-    setExchangeRate(newExchangeRate);
+  // Efecto para cargar los datos de las habitaciones
+  useEffect(() => {
+    setLoading(true); // Iniciar la carga
+    const fetchRooms = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/rooms');
+        setRoomsData(response.data); // Establecer los datos de las habitaciones
+      } catch (error) {
+        console.error('Error al obtener los datos de las habitaciones:', error);
+      }
+      setLoading(false); // Finalizar la carga
+    };
+
+    fetchRooms();
+  }, []);
+
+  // Manejador para seleccionar una habitación
+  const handleRoomSelect = (room) => {
+    setSelectedRoom(room);
   };
+
+  // Filtrado de habitaciones según el número de personas
+  const filteredRooms = roomsData.filter(room => room.people >= peopleFilter);
 
   return (
     <motion.div
       className="container mx-auto px-4 py-8"
-      style={{ 
-        backgroundSize: 'cover', 
-        backgroundRepeat: 'no-repeat',
-        backdropFilter: 'blur(5px)',
-       
-      }}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <div className="text-center mb-6">
-        <h2 className="text-4xl font-bold inline-block p-2"
-          >
-          Precios de las Habitaciones
+        <h2 className="text-4xl font-bold mb-8 mt-4 text-sky-600">
+          Habitaciones disponibles
         </h2>
-        <div>
-  <button
-    onClick={() => handleCurrencyChange('EUR')}
-    className=" font-medium py-1 px-3 rounded shadow-sm"
-  >
-    Cambiar a Euros
-  </button>
-  <button
-    onClick={() => handleCurrencyChange('USD')}
-    className=" font-medium py-1 px-3 rounded shadow-sm ml-2"
-  >
-    Cambiar a Dólares
-  </button>
-</div>
-
+        {/* Input para el filtro de personas */}
+        <input
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          type="number"
+          placeholder="Ingresa número de personas a hospedar"
+          value={peopleFilter}
+          onChange={(e) => setPeopleFilter(e.target.value)}
+        />
       </div>
-      <motion.div className="flex flex-wrap -m-4"
-        variants={containerVariants}
-      >
-        {pricesData.map((price, idx) => (
-          <motion.div key={idx} className="p-4 md:w-1/3"
-            variants={itemVariants}
-          >
-            <RoomCard 
-              roomName={price.name} 
-              roomDescription={price.description}
-              roomImage={price.image}
-              price={price.price}
-              currency={currency}
-              exchangeRate={exchangeRate}
-            />
-          </motion.div>
-        ))}
-      </motion.div>
+      {/* Loader visual */}
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500"></div>
+        </div>
+      ) : filteredRooms.length > 0 ? (
+        <motion.div className="flex flex-wrap -m-4"
+          variants={containerVariants}
+        >
+          {/* Renderizado de las habitaciones */}
+          {filteredRooms.map((room, idx) => (
+            <motion.div key={idx} className="p-4 md:w-1/3"
+              variants={itemVariants}
+              onClick={() => handleRoomSelect(room)}
+            >
+              <RoomCard
+                roomName={room.name}
+                roomDescription={room.description}
+                roomImages={room.images}
+                price={room.price}
+                currency={currency}
+                exchangeRate={exchangeRate}
+                reviews={room.reviews}
+                people={room.people}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      ) : (
+        // Mensaje cuando no se encuentran habitaciones
+        <div className="text-center text-xl mt-8">
+          No se encontraron habitaciones para la cantidad de personas especificada.
+        </div>
+      )}
     </motion.div>
   );
 };
